@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - Freezable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Floor
+  - Player
   - Water
   - UI
   - 
@@ -39,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Back
+    uniqueID: 1870960397
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Front
+    uniqueID: 138372085
     locked: 0

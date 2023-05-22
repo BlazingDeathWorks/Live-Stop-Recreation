@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //This script is an edited version of the BS2DP script to include bonuses.
-    //If you are not doing the bonus assignment, no edits need to be made.
+    //The following script is a bonus extension of the BS2DP player script.
+    //If you are skipping the bonus assignment, use that script instead.
 
     [SerializeField] private float speed = 4f;
     [SerializeField] private float jumpForce = 4f;
