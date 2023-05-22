@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Freezable
+  - Floor
   layers:
   - Default
   - TransparentFX

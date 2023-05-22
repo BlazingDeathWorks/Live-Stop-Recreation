@@ -27,10 +27,13 @@ public class PlayerController : MonoBehaviour
     private float jumpTime;
     private float airTime;
 
+    private PlayerAbilities playerAb;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.GetChild(0);
+        playerAb = GetComponent<PlayerAbilities>();
     }
 
     private void Update()
@@ -79,6 +82,16 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = new Vector2(movement * speed, rb.velocity.y);
+
+        if (rb.velocity.x < 0)
+        {
+            playerAb.bulletDirection = -1;
+        }
+
+        if (rb.velocity.x > 0)
+        {
+            playerAb.bulletDirection = 1;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

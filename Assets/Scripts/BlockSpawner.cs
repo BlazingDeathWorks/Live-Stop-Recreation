@@ -8,7 +8,7 @@ public class BlockSpawner : MonoBehaviour
 
     [SerializeField] private GameObject block;
 
-    public bool blockActive;
+    private bool blockActive;
 
     private void Update()
     {
