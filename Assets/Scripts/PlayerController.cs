@@ -1,43 +1,79 @@
-/*
-    1- Basic Movement System
-    2- Check if character is grounded or not (if it is touching the floor)
-    3- Jump when the W key or Up arrow key is pressed and the character is on the ground
-*/
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float speed = 4f;
+
+    [Header("Jumping")]
+    [SerializeField] private float jumpForce = 4f;
+    [SerializeField] private float buttonTime = 0.3f;
+    [SerializeField] private float jumpWindow = 0.15f;
+    [SerializeField] private float coyoteTime = 0.15f;
+
+    [Header("Ground Checking")]
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform groundCheck;
 
-    private Collider2D playerCollider;
     private Rigidbody2D rb;
-    private bool isGrounded;
 
-    private void Start()
+    private bool isGrounded;
+    private bool isJumping;
+
+    private float moveInput;
+    private float jumpBuffer;
+    private float jumpTime;
+    private float airTime;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerCollider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        float moveInput = Input.GetAxis("Horizontal");
+        moveInput = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y); // Move the character horizontally (#1)
-
-        isGrounded = IsGrounded(); // Check if the character is on the ground (#2)
-        
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && isGrounded) //#3
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+            jumpBuffer = jumpWindow;
+        }
+        else
+        {
+            jumpBuffer -= Time.deltaTime;
+        }
+
+        if (isGrounded)
+        {
+            airTime = coyoteTime;
+        }
+        else
+        {
+            airTime -= Time.deltaTime;
+        }
+
+        if (!Input.GetButton("Jump") || jumpTime >= buttonTime)
+        {
+            isJumping = false;
         }
     }
 
-    private bool IsGrounded()
+    private void FixedUpdate()
     {
-        bool isTouchingGround = playerCollider.IsTouchingLayers(groundLayer);
-        return isTouchingGround;
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(.925f, .1f), 0, groundLayer);
+
+        if (jumpBuffer > 0 && airTime > 0)
+        {
+            isJumping = true;
+            jumpTime = 0;
+            jumpBuffer = 0;
+        }
+
+        if (isJumping)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpTime += Time.deltaTime;
+        }
+
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
     }
 }
