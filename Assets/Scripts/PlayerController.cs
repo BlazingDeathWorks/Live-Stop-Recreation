@@ -2,24 +2,27 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 4f;
+    //This script is an edited version of the BS2DP script to include bonuses.
+    //If you are not doing the bonus assignment, no edits need to be made.
 
-    [Header("Jumping")]
+    [SerializeField] private float speed = 4f;
     [SerializeField] private float jumpForce = 4f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Vector2 groundCheckSize;
+    [SerializeField] private Vector2 spawnPoint;
+
+    [Header("Bonus Jumping Variables")]
     [SerializeField] private float buttonTime = 0.3f;
     [SerializeField] private float jumpWindow = 0.15f;
     [SerializeField] private float coyoteTime = 0.15f;
 
-    [Header("Ground Checking")]
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Transform groundCheck;
-
-    private Rigidbody2D rb;
-
+    private float movement;
     private bool isGrounded;
     private bool isJumping;
 
-    private float moveInput;
+    private Rigidbody2D rb;
+    private Transform groundCheck;
+
     private float jumpBuffer;
     private float jumpTime;
     private float airTime;
@@ -27,11 +30,12 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        groundCheck = transform.GetChild(0);
     }
 
     private void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        movement = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -59,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(.925f, .1f), 0, groundLayer);
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
 
         if (jumpBuffer > 0 && airTime > 0)
         {
@@ -74,6 +78,14 @@ public class PlayerController : MonoBehaviour
             jumpTime += Time.deltaTime;
         }
 
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2(movement * speed, rb.velocity.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            transform.position = spawnPoint;
+        }
     }
 }
