@@ -6,7 +6,6 @@ public class PlayerAbilities : MonoBehaviour
 {
     private bool timeStopped;
     private GameObject[] freezables;
-    private Vector2 vel2D;
     
     void Update()
     {
@@ -29,9 +28,10 @@ public class PlayerAbilities : MonoBehaviour
         {
             Rigidbody2D rb = freezable.GetComponent<Rigidbody2D>();
 
+            Vector2 vel2D = rb.velocity;
+
             if (!timeStopped)
             {
-                vel2D = rb.velocity;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 timeStopped = true;
             }
