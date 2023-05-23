@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1.unity
     guid: 33309f0c98f278d4b81e57352e207c30
   - enabled: 1
-    path: Assets/Scenes/Decoy.unity
-    guid: c46d9468b855ec74a9ae4b3299599be4
+    path: Assets/Scenes/Level 2.unity
+    guid: 62019c2d8a8e6794ea534dee342d498a
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: 751bb878aff01d247b5762ab9bc6d8d3
+  - enabled: 1
+    path: Assets/Scenes/Level 4.unity
+    guid: 4b55bfb55296c79428e938d9c1792ae7
+  - enabled: 1
+    path: Assets/Scenes/Level 5.unity
+    guid: 75089ad215616384db82481b36e522e2
   m_configObjects: {}
