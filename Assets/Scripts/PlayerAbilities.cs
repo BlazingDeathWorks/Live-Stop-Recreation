@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    private bool timeStopped;
     private GameObject[] freezables;
 
     [SerializeField] private GameObject bullet;
@@ -22,7 +21,7 @@ public class PlayerAbilities : MonoBehaviour
         //Freeze Time
         if (Input.GetKeyDown(KeyCode.K))
         {
-            TimeFreeze();
+            FreezeManager.FreezeTime();
         }
 
         if (bullet.gameObject.activeInHierarchy == false)
@@ -35,30 +34,6 @@ public class PlayerAbilities : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && bulletShot == false)
         {
             Shoot();
-        }
-    }
-
-    void TimeFreeze()
-    {
-        freezables = GameObject.FindGameObjectsWithTag("Freezable");
-
-        foreach (GameObject freezable in freezables)
-        {
-            Rigidbody2D rb = freezable.GetComponent<Rigidbody2D>();
-
-            Vector2 vel2D = rb.velocity;
-
-            if (!timeStopped)
-            {
-                rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                timeStopped = true;
-            }
-            else
-            {
-                rb.constraints = RigidbodyConstraints2D.None;
-                rb.velocity = vel2D;
-                timeStopped = false;
-            }
         }
     }
 

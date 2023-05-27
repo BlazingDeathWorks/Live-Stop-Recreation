@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
+        Speed *= FreezeManager.FreezeTimer;
         rb.velocity = new Vector2(Speed, 0);
     }
 

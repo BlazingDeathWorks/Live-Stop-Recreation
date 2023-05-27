@@ -4,14 +4,32 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    [SerializeField] private float yLimit;
+    private Rigidbody2D rb;
+    private Vector2 stoppedVelocity;
+    private bool timeFrozenFirstFrame = true;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if (transform.position.y < yLimit)
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!FreezeManager.TimeStopped)
         {
-            gameObject.SetActive(false);
+            if (timeFrozenFirstFrame) stoppedVelocity = rb.velocity;
         }
+
+        if (FreezeManager.TimeStopped)
+        {
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
+            timeFrozenFirstFrame = false;
+            return;
+        }
+
+        rb.gravityScale = 1;
+        rb.velocity = stoppedVelocity;
+        timeFrozenFirstFrame = true;
     }
 }

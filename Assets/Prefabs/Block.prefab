@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 887386808875575689}
   - component: {fileID: 4998401639967793482}
   - component: {fileID: 5862358094647263267}
+  - component: {fileID: 8665036182933462405}
   m_Layer: 0
   m_Name: Block
   m_TagString: Freezable
@@ -158,3 +159,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8665036182933462405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218852669375445517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7ad65390b3b664da3bb7755481a42a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yLimit: 0
