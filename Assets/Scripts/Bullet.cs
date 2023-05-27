@@ -5,12 +5,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float Speed;
+    private float originalSpeed;
 
     private Rigidbody2D rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalSpeed = Speed;
     }
 
     void FixedUpdate()
@@ -23,6 +25,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             gameObject.SetActive(false);
+            Speed = originalSpeed;
         }
     }
 }

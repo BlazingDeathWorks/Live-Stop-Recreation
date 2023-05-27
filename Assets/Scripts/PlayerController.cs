@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
     {
         movement = Input.GetAxisRaw("Horizontal");
 
+        if (movement != 0)
+        {
+            playerAb.bulletDirection = Mathf.Sign(movement);
+        }
+
         if (Input.GetButtonDown("Jump"))
         {
             jumpBuffer = jumpWindow;
@@ -86,8 +91,6 @@ public class PlayerController : MonoBehaviour
 
         if (movement == 0) rb.velocity = new Vector2(bulletGroundCheck.GetBulletSpeed(), rb.velocity.y);
         else rb.velocity = new Vector2(movement * speed, rb.velocity.y);
-
-        playerAb.bulletDirection = Mathf.Sign(rb.velocity.x);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

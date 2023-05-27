@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Unity.Collections.AllocatorManager;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -14,11 +13,13 @@ public class PlayerAbilities : MonoBehaviour
 
     void Update()
     {
+        //Reset
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        //Freeze Time
         if (Input.GetKeyDown(KeyCode.K))
         {
             TimeFreeze();
@@ -30,6 +31,7 @@ public class PlayerAbilities : MonoBehaviour
             bullet.transform.parent = transform;
         }
 
+        //Shoot
         if (Input.GetKeyDown(KeyCode.J) && bulletShot == false)
         {
             Shoot();
