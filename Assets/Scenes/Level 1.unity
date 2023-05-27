@@ -332,11 +332,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206624687}
   m_CullTransparentMesh: 1
---- !u!1 &643042157 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9184850780548999844, guid: b5ffe1bf11eded1479ecdca3952cad7c, type: 3}
-  m_PrefabInstance: {fileID: 2383987304565979646}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &978433936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -935,14 +930,6 @@ PrefabInstance:
     - target: {fileID: 606524829774218088, guid: b5ffe1bf11eded1479ecdca3952cad7c, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1200552667411317201, guid: b5ffe1bf11eded1479ecdca3952cad7c, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 643042157}
-    - target: {fileID: 1200552667411317201, guid: b5ffe1bf11eded1479ecdca3952cad7c, type: 3}
-      propertyPath: bulletDirection
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1711001812186610626, guid: b5ffe1bf11eded1479ecdca3952cad7c, type: 3}
       propertyPath: m_RootOrder

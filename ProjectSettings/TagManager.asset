@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Freezable
   - Floor
+  - Bullet
   layers:
   - Default
   - TransparentFX
