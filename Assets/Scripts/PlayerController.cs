@@ -57,7 +57,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            airTime -= Time.deltaTime;
+            if (isJumping) airTime = 0;
+            else airTime -= Time.deltaTime;
+        }
+
+        if (jumpBuffer > 0 && airTime > 0)
+        {
+            isJumping = true;
+            jumpTime = 0;
+            jumpBuffer = 0;
         }
 
         if (!Input.GetButton("Jump") || jumpTime >= buttonTime)
@@ -70,17 +78,10 @@ public class PlayerController : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundLayer);
 
-        if (jumpBuffer > 0 && airTime > 0)
-        {
-            isJumping = true;
-            jumpTime = 0;
-            jumpBuffer = 0;
-        }
-
         if (isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            jumpTime += Time.deltaTime;
+            jumpTime += Time.fixedDeltaTime;
         }
 
         if (movement == 0) rb.velocity = new Vector2(bulletGroundCheck.GetBulletSpeed(), rb.velocity.y);

@@ -5,14 +5,17 @@ using UnityEngine;
 public class BlockSpawner : MonoBehaviour
 {
     [SerializeField] private Transform blockSpawnPoint;
-
-    [SerializeField] private GameObject block;
-
+    private GameObject block;
     private bool blockActive;
+
+    private void Awake()
+    {
+        block = transform.GetChild(1).gameObject;
+    }
 
     private void Update()
     {
-        if (transform.GetChild(1).gameObject.activeInHierarchy == false)
+        if (block.activeInHierarchy == false)
         {
             blockActive = false;
         }
