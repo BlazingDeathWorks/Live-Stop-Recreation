@@ -19,7 +19,7 @@ public class PlayerAbilities : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             TimeFreeze();
         }
@@ -30,7 +30,7 @@ public class PlayerAbilities : MonoBehaviour
             bullet.transform.parent = transform;
         }
 
-        if (Input.GetKeyDown(KeyCode.C) && bulletShot == false)
+        if (Input.GetKeyDown(KeyCode.J) && bulletShot == false)
         {
             Shoot();
         }
