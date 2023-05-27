@@ -28,12 +28,14 @@ public class PlayerController : MonoBehaviour
     private float airTime;
 
     private PlayerAbilities playerAb;
+    private BulletGroundCheck bulletGroundCheck;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         groundCheck = transform.GetChild(0);
         playerAb = GetComponent<PlayerAbilities>();
+        bulletGroundCheck = GetComponentInChildren<BulletGroundCheck>();
     }
 
     private void Update()
@@ -81,7 +83,8 @@ public class PlayerController : MonoBehaviour
             jumpTime += Time.deltaTime;
         }
 
-        rb.velocity = new Vector2(movement * speed, rb.velocity.y);
+        if (movement == 0) rb.velocity = new Vector2(bulletGroundCheck.GetBulletSpeed(), rb.velocity.y);
+        else rb.velocity = new Vector2(movement * speed, rb.velocity.y);
 
         if (rb.velocity.x < 0)
         {

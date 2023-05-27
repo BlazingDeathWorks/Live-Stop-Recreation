@@ -65,7 +65,7 @@ public class PlayerAbilities : MonoBehaviour
         bullet.SetActive(true);
         bullet.transform.position = new Vector2(transform.position.x + (bulletDirection * 0.75f), transform.position.y);
         bullet.transform.rotation = Quaternion.identity;
-        bullet.GetComponent<Bullet>().speed *= bulletDirection;
+        bullet.GetComponent<Bullet>().Speed *= bulletDirection;
         bullet.transform.parent = null;
         bulletShot = true;
     }
