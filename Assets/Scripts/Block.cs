@@ -6,7 +6,7 @@ public class Block : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Vector2 stoppedVelocity;
-    private bool timeFrozenFirstFrame = true;
+    private bool timeFrozenFirstFrame = false;
 
     private void Awake()
     {
@@ -17,18 +17,21 @@ public class Block : MonoBehaviour
     {
         if (!FreezeManager.TimeStopped)
         {
-            if (timeFrozenFirstFrame) stoppedVelocity = rb.velocity;
+            if (timeFrozenFirstFrame)
+            {
+                stoppedVelocity = rb.velocity;
+                rb.isKinematic = false;
+            }
         }
 
         if (FreezeManager.TimeStopped)
         {
-            rb.gravityScale = 0;
             rb.velocity = Vector2.zero;
             timeFrozenFirstFrame = false;
+            rb.isKinematic = true;
             return;
         }
 
-        rb.gravityScale = 1;
         rb.velocity = stoppedVelocity;
         timeFrozenFirstFrame = true;
     }

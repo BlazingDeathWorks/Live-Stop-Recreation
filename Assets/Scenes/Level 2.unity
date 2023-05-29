@@ -984,6 +984,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c24807ca9918e2348a69f1e59e036437, type: 3}
+--- !u!1001 &1530561959
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27943971602545383, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190890657410268725, guid: a97e3846114555b4491869a33c9bef23, type: 3}
+      propertyPath: m_Name
+      value: Freeze Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a97e3846114555b4491869a33c9bef23, type: 3}
 --- !u!1001 &1586315129
 PrefabInstance:
   m_ObjectHideFlags: 0

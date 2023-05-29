@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
             jumpTime += Time.fixedDeltaTime;
         }
 
-        if (movement == 0) rb.velocity = new Vector2(bulletGroundCheck.GetBulletSpeed(), rb.velocity.y);
+        if (movement == 0) rb.velocity = new Vector2(bulletGroundCheck.GetBulletSpeed() * FreezeManager.FreezeTimer, rb.velocity.y);
         else rb.velocity = new Vector2(movement * speed, rb.velocity.y);
     }
 

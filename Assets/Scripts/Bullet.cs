@@ -12,13 +12,13 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
         originalSpeed = Speed;
     }
 
     void FixedUpdate()
     {
-        Speed *= FreezeManager.FreezeTimer;
-        rb.velocity = new Vector2(Speed, 0);
+        rb.velocity = new Vector2(Speed * FreezeManager.FreezeTimer, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
