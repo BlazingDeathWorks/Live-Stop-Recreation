@@ -4,18 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    private GameObject[] freezables;
-
+    public float BulletDirection;
     [SerializeField] private GameObject bullet;
     private bool bulletShot;
-    public float bulletDirection;
 
     void Update()
     {
         //Reset
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Restart();
         }
 
         //Freeze Time
@@ -40,10 +38,15 @@ public class PlayerAbilities : MonoBehaviour
     void Shoot()
     {
         bullet.SetActive(true);
-        bullet.transform.position = new Vector2(transform.position.x + (bulletDirection * 0.75f), transform.position.y);
+        bullet.transform.position = new Vector2(transform.position.x + (BulletDirection * 0.75f), transform.position.y);
         bullet.transform.rotation = Quaternion.identity;
-        bullet.GetComponent<Bullet>().Speed *= bulletDirection;
+        bullet.GetComponent<Bullet>().Speed *= BulletDirection;
         bullet.transform.parent = null;
         bulletShot = true;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

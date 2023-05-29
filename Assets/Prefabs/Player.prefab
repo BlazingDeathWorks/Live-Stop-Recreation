@@ -36,7 +36,7 @@ Transform:
   - {fileID: 5342341813863908831}
   - {fileID: 6405817439918539014}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2221099244852405963
 SpriteRenderer:
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d36ca6e687b95f46a6f8fa2599f2881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletDirection: 1
   bullet: {fileID: 9184850780548999844}
-  bulletDirection: 1
 --- !u!61 &2572959048374576720
 BoxCollider2D:
   m_ObjectHideFlags: 0

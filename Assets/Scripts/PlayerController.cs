@@ -40,12 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        movement = Input.GetAxisRaw("Horizontal");
-
-        if (movement != 0)
-        {
-            playerAb.bulletDirection = Mathf.Sign(movement);
-        }
+        CheckHorzMovement();
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -97,7 +92,17 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            transform.position = spawnPoint;
+            playerAb.Restart();
+        }
+    }
+
+    private void CheckHorzMovement()
+    {
+        movement = Input.GetAxisRaw("Horizontal");
+
+        if (movement != 0)
+        {
+            playerAb.BulletDirection = Mathf.Sign(movement);
         }
     }
 }
